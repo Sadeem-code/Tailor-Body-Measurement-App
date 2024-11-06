@@ -1,0 +1,41 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-gray-100">
+    <ActionBar title="Tailor Measurements" class="bg-blue-600 text-white" />
+    
+    <ScrollView>
+        <StackLayout class="p-4 space-y-4">
+            <!-- Image Capture Section -->
+            <Label text="Step 1: Capture Photos" class="text-xl font-bold" />
+            <GridLayout rows="auto, auto" columns="*, *" class="space-y-2">
+                <Button text="Front Photo" tap="{{ captureFrontImage }}" row="0" col="0" class="bg-blue-500 text-white m-1" />
+                <Button text="Side Photo" tap="{{ captureSideImage }}" row="0" col="1" class="bg-blue-500 text-white m-1" />
+                
+                <Image src="{{ frontImage }}" height="150" row="1" col="0" class="m-1" />
+                <Image src="{{ sideImage }}" height="150" row="1" col="1" class="m-1" />
+            </GridLayout>
+
+            <!-- Height Input Section -->
+            <Label text="Step 2: Enter Height" class="text-xl font-bold mt-4" />
+            <GridLayout rows="auto" columns="*, auto" class="bg-white p-2 rounded">
+                <TextField hint="Enter height in meters" keyboardType="number" text="{{ height }}" col="0" class="p-2" />
+                <Label text="meters" col="1" class="p-2" />
+            </GridLayout>
+
+            <!-- Calculate Button -->
+            <Button text="Calculate Measurements" tap="{{ calculateMeasurements }}" class="bg-green-500 text-white" />
+
+            <!-- Results Section -->
+            <Label text="Body Measurements" class="text-xl font-bold mt-4" />
+            <StackLayout class="bg-white p-4 rounded space-y-2">
+                <Label text="Height: {{ measurements.height }} m" />
+                <Label text="Chest: {{ measurements.chest }} m" />
+                <Label text="Hip: {{ measurements.hip }} m" />
+                <Label text="Waist: {{ measurements.waist }} m" />
+                <Label text="Thigh: {{ measurements.thigh }} m" />
+                <Label text="Outer Leg: {{ measurements.outerLeg }} m" />
+                <Label text="Inner Leg: {{ measurements.innerLeg }} m" />
+                <Label text="Neck-Hip Length: {{ measurements.neckHipLength }} m" />
+                <Label text="Shoulder: {{ measurements.shoulder }} m" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
